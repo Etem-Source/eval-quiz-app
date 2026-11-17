@@ -49,6 +49,3 @@ Lisez les documents dans cet ordre :
 - Versionnez les fichiers de configuration, les scripts et les workflows **que vous produisez**.
 - Ne commitez jamais de mots de passe, URL PostgreSQL contenant des identifiants, clés API, secrets GitHub/GitLab ou fichiers `.env` réels.
 - Une démonstration validée reste acquise même si les ressources cloud sont supprimées ensuite.
-- Le barème chiffré est conservé par le formateur ; les critères de réussite figurent dans les documents des jalons.
-
-> Les répertoires du code source applicatif seront ajoutés par le formateur. Leur organisation réelle prévaut sur toute arborescence indicative.
