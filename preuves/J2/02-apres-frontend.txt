@@ -1,4 +1,5 @@
-﻿
+﻿Commande : iex "$trivy image --scanners vuln eval-quiz-app-frontend
+
 Report Summary
 
 ┌────────────────────────────────────────┬────────┬─────────────────┐

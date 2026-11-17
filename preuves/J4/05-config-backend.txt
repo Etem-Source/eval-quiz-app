@@ -1,0 +1,16 @@
+﻿{
+  "ingress": false,
+  "registre": [
+    {
+      "identity": "system",
+      "passwordSecretRef": "",
+      "server": "acrquizetem.azurecr.io",
+      "username": ""
+    }
+  ],
+  "secrets": [
+    "resend-key",
+    "jwt-secret",
+    "admin-password"
+  ]
+}

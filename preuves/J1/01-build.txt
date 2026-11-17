@@ -1,8 +1,8 @@
-﻿Commande : docker compose build --no-cache 2>&1
+﻿Commande : docker compose build
 
 docker :  Image eval-quiz-app-frontend Building 
 Au caractère Ligne:1 : 1
-+ docker compose build --no-cache 2>&1 | Out-File -Encoding utf8 preuve ...
++ docker compose build | Out-File -Encoding utf8 preuve ...
 + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     + CategoryInfo          : NotSpecified: ( Image eval-quiz-app-frontend Building :String) [], RemoteException
     + FullyQualifiedErrorId : NativeCommandError
