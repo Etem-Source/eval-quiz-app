@@ -1,0 +1,4 @@
+﻿Nom            Image                                         Ingress_externe    Fqdn
+-------------  --------------------------------------------  -----------------  ----------------------------------------------------------------------------
+quiz-backend   acrquizetem.azurecr.io/quiz-backend:444d825   False              quiz-backend.internal.gentlebay-5388aeac.francecentral.azurecontainerapps.io
+quiz-frontend  acrquizetem.azurecr.io/quiz-frontend:444d825  True               quiz-frontend.gentlebay-5388aeac.francecentral.azurecontainerapps.io

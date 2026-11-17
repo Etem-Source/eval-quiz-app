@@ -1,0 +1,6 @@
+﻿Revision               Active    Etat               Sante
+---------------------  --------  -----------------  -------
+quiz-backend--0000001  True      RunningAtMaxScale  Healthy
+Revision                Active    Etat               Sante
+----------------------  --------  -----------------  -------
+quiz-frontend--0000001  True      RunningAtMaxScale  Healthy

@@ -9,6 +9,7 @@ FROM nginxinc/nginx-unprivileged:alpine
 USER root
 RUN apk upgrade --no-cache
 USER 101
-COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+ENV BACKEND_HOST=backend:3007
+COPY nginx/nginx.conf /etc/nginx/templates/default.conf.template
 COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 8080
