@@ -1,0 +1,9 @@
+﻿Commande : docker compose exec db psql -U quiz_user -d quiz_db -c $q
+(APRES)
+
+
+ firstname | score | total_questions |        completed_at        
+-----------+-------+-----------------+----------------------------
+ Etem      |     9 |              20 | 2026-11-17 10:23:13.101293
+(1 row)
+

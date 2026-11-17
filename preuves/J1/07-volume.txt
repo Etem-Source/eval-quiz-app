@@ -1,0 +1,34 @@
+﻿Commande : docker volume ls
+docker volume inspect eval-quiz-app_pgdata
+
+
+DRIVER    VOLUME NAME
+local     8704d80aef4fa6ba6a66ee1fe99ef2eedf39fb35bdc37e7b6d9e6c21c320e1e3
+local     compose-flask-redis_redis-data
+local     docker-compose-exercice1_drupal-db
+local     docker-compose-exercice1_drupal-modules
+local     docker-compose-exercice1_drupal-profiles
+local     docker-compose-exercice1_drupal-sites
+local     docker-compose-exercice1_drupal-themes
+local     eval-quiz-app_pgdata
+local     labspace-content
+local     labspace-socket-proxy
+local     labspace_docker-creds
+local     labspace_labspace-instructions
+local     labspace_labspace-support
+[
+    {
+        "CreatedAt": "2026-11-17T10:20:21Z",
+        "Driver": "local",
+        "Labels": {
+            "com.docker.compose.config-hash": "fdcddb49f4e25d0d4a1b2721416ca4bc975052ae0bfbeee0eba39d3dcff846d1",
+            "com.docker.compose.project": "eval-quiz-app",
+            "com.docker.compose.version": "5.7.0",
+            "com.docker.compose.volume": "pgdata"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/eval-quiz-app_pgdata/_data",
+        "Name": "eval-quiz-app_pgdata",
+        "Options": null,
+        "Scope": "local"
+    }
+]

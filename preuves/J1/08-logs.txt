@@ -1,0 +1,12 @@
+﻿Commande : docker compose logs --no-color backend db 
+
+backend-1  | Server running on port 3007
+db-1       | 
+db-1       | PostgreSQL Database directory appears to contain a database; Skipping initialization
+db-1       | 
+db-1       | 2026-11-17 10:53:11.086 UTC [1] LOG:  starting PostgreSQL 16.16 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+db-1       | 2026-11-17 10:53:11.086 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db-1       | 2026-11-17 10:53:11.086 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db-1       | 2026-11-17 10:53:11.094 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db-1       | 2026-11-17 10:53:11.102 UTC [29] LOG:  database system was shut down at 2026-11-17 10:53:09 UTC
+db-1       | 2026-11-17 10:53:11.112 UTC [1] LOG:  database system is ready to accept connections

@@ -1,0 +1,17 @@
+﻿Commande : curl.exe -s -i http://localhost:8087/health 
+
+HTTP/1.1 200 OK
+Server: nginx/1.31.7
+Date: Tue, 17 Nov 2026 10:48:44 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 15
+Connection: keep-alive
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+RateLimit-Policy: 100;w=900
+RateLimit-Limit: 100
+RateLimit-Remaining: 99
+RateLimit-Reset: 900
+ETag: W/"f-VaSQ4oDUiZblZNAEkkN+sX+q3Sg"
+
+{"status":"ok"}
