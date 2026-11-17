@@ -11,6 +11,45 @@ Les exigences sont identiques ; ni bonus ni pénalité selon l'outil. Une Pull R
 
 Le dépôt du formateur sert de **référence en lecture**. Chaque groupe travaille dans **son fork GitHub**. Toute Pull Request doit cibler la branche `main` **du fork du groupe**, et non `main` du formateur. Pour GitLab, travaillez dans votre projet de groupe et ciblez son `main` avec les Merge Requests. Une branche `develop` n’est pas requise. Les secrets et l’accès Azure sont à configurer sur le dépôt du groupe ; ils ne sont pas hérités du dépôt initial.
 
+## Procédure GitHub — protéger `main` et créer une Pull Request
+
+Cette procédure se réalise **dans le fork de votre groupe**, jamais dans le dépôt du formateur.
+
+### A. Créer et vérifier votre fork
+
+1. Ouvrez le [dépôt de référence](https://github.com/franklin-tutorials/eval-quiz-app), puis cliquez sur **Fork** > **Create a new fork**.
+2. Vérifiez que votre fork appartient à votre compte ou à votre organisation de groupe et possède une branche `main`.
+3. Dans **Settings** > **General** (rubrique **Pull Requests**, si elle est présente), vérifiez qu'au moins une méthode de fusion est activée. Chaque membre qui doit contribuer doit avoir les droits nécessaires sur le fork.
+
+### B. Protéger la branche `main` de votre fork
+
+1. Dans **votre fork** : **Settings** > **Branches** > **Add branch protection rule** (ou **Settings** > **Rules** > **Rulesets** > **New branch ruleset**, selon l'interface et les droits disponibles).
+2. Ciblez exactement la branche `main`.
+3. Activez **Require a pull request before merging**. Si la revue obligatoire est disponible et qu'un autre membre a les permissions requises, demandez une approbation. Vous pouvez également activer **Require conversation resolution before merging**.
+4. N'autorisez ni la suppression de `main` ni les **force pushes**. Enregistrez et vérifiez que la règle est **active** (une règle en mode évaluation seule n'empêche pas la fusion).
+5. **Après la première exécution réussie du workflow CI**, activez **Require status checks to pass before merging** et sélectionnez les contrôles de build et de scan Trivy réellement publiés par le workflow. Ne devinez pas le nom des contrôles et ne définissez pas un contrôle absent, ce qui pourrait bloquer toute fusion.
+
+Les possibilités d'application effective des règles dépendent du **plan GitHub**, de la visibilité du fork, de son propriétaire et des droits du groupe. Si une règle ne peut pas être appliquée sur votre fork, **ne prétendez pas qu'elle est active** : documentez la restriction et montrez les contrôles réellement obtenus. Une règle affichée dans l'interface n'est pas à elle seule la preuve qu'elle bloque les actions.
+
+### C. Créer une PR vers votre propre fork
+
+1. Sur `main` de **votre fork**, créez `feature/test-pr` (par exemple une petite modification d'un fichier Markdown).
+2. Poussez cette branche sur **votre fork**.
+3. Ouvrez **Pull requests** > **New pull request** et vérifiez **avant de créer la PR** :
+   - **Base repository** : dépôt de **votre groupe**, et **Base** : `main`.
+   - **Head repository** : dépôt de **votre groupe**, et **Compare** : `feature/test-pr`.
+4. Créez la PR et consultez les contrôles CI. Corrigez les échecs, faites approuver la PR si une approbation est requise, puis fusionnez uniquement lorsque les conditions obligatoires sont satisfaites.
+5. Vérifiez que le changement apparaît sur `main` **de votre fork**. N'ouvrez **aucune PR vers `franklin-tutorials/eval-quiz-app`**.
+
+### D. Vérifier que la protection fonctionne réellement
+
+- Tentez de pousser une petite modification directement sur `main` **sans forcer** et sans modifier l'historique ; si la protection est effectivement appliquée à votre compte, l'opération doit être refusée. Ne réalisez pas ce test si vous avez des modifications non sauvegardées.
+- Montrez qu'une PR peut être créée, que les contrôles requis s'exécutent et qu'une CI en échec empêche la fusion.
+- Fournissez des captures ou liens **sans secrets** : règle de protection active, PR vers votre fork, résultat des vérifications, puis fusion.
+- Si votre plateforme ou votre offre ne permet pas d'imposer toutes ces restrictions, signalez-le explicitement et présentez la mesure alternative choisie.
+
+**Variante GitLab :** appliquez la même logique avec branches protégées, Merge Requests, pipelines obligatoires et approbations, selon les capacités disponibles sur votre projet GitLab.
+
 ## Scénario de démonstration
 
 1. À partir de la branche `main` **de votre dépôt de groupe**, créez une branche `feature/...`.
