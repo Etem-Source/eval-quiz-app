@@ -1,0 +1,7 @@
+﻿Nom             Secret
+--------------  --------------
+RESEND_API_KEY  resend-key
+JWT_SECRET      jwt-secret
+ADMIN_USERNAME
+ADMIN_PASSWORD  admin-password
+DATABASE_URL    database-url
