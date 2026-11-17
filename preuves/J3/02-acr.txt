@@ -1,0 +1,5 @@
+﻿Commande : az acr show -n $ACR --query "{name:name, loginServer:loginServer, sku:sku.name, location:location}" -o table
+
+Name         LoginServer             Sku    Location
+-----------  ----------------------  -----  -------------
+acrquizetem  acrquizetem.azurecr.io  Basic  francecentral

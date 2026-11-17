@@ -1,0 +1,5 @@
+﻿Commande : az group show -n $RG -o table
+
+Location       Name
+-------------  -----------
+francecentral  rg-quiz-app
