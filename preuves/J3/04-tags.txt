@@ -1,0 +1,6 @@
+﻿Commande : az acr repository show-tags -n $ACR --repository quiz-backend -o table
+az acr repository show-tags -n $ACR --repository quiz-frontend -o table 
+
+Result
+--------
+d92968b

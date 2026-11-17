@@ -1,0 +1,6 @@
+﻿Commande : az acr repository list -n $ACR -o table
+
+Result
+-------------
+quiz-backend
+quiz-frontend
