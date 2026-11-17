@@ -1,0 +1,7 @@
+﻿Commande : docker compose up -d
+docker compose ps
+
+NAME                       IMAGE                    COMMAND                  SERVICE    CREATED          STATUS                            PORTS
+eval-quiz-app-backend-1    eval-quiz-app-backend    "/sbin/tini -- node ÔÇª"   backend    7 seconds ago    Up 6 seconds (health: starting)   3007/tcp
+eval-quiz-app-db-1         postgres:16-alpine       "docker-entrypoint.sÔÇª"   db         18 minutes ago   Up 18 minutes (healthy)           5432/tcp
+eval-quiz-app-frontend-1   eval-quiz-app-frontend   "/docker-entrypoint.ÔÇª"   frontend   7 seconds ago    Up 6 seconds                      0.0.0.0:8087->8080/tcp, [::]:8087->8080/tcp

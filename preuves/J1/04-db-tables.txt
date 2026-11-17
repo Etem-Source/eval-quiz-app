@@ -1,0 +1,10 @@
+﻿Commande : docker compose exec db psql -U quiz_user -d quiz_db -c "\dt"
+
+             List of relations
+ Schema |     Name     | Type  |   Owner   
+--------+--------------+-------+-----------
+ public | answers      | table | quiz_user
+ public | quiz_results | table | quiz_user
+ public | users        | table | quiz_user
+(3 rows)
+
