@@ -7,8 +7,8 @@ Outil : Trivy (image `aquasec/trivy:latest`), scanner `vuln`, sévérités HIGH/
 | Image | Avant | Après |
 |---|---|---|
 | Frontend | 13 (12 HIGH, 1 CRITICAL `brotli-libs`) – OS uniquement | **0** |
-| Backend – OS | 7 HIGH (openssl, musl, zlib) | ? |
-| Backend – Node | 22 (21 HIGH, 1 CRITICAL `tar`) | ? |
+| Backend – OS | 7 HIGH (openssl, musl, zlib) | 0 |
+| Backend – Node | 22 (21 HIGH, 1 CRITICAL `tar`) | 0 |
 
 Rapports complets : `01-avant-*.txt` et `02-apres-*.txt`.
 
