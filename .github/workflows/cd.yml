@@ -1,0 +1,67 @@
+name: CD
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+env:
+  RG: rg-quiz-app
+  ACR: acrquizetem
+
+jobs:
+  deploy:
+    name: Publication ACR et deploiement Container Apps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Tag de l'image (SHA court du commit)
+        run: echo "TAG=${GITHUB_SHA::7}" >> "$GITHUB_ENV"
+
+      - name: Connexion a Azure (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Build des images
+        run: |
+          docker build -t "$ACR.azurecr.io/quiz-backend:$TAG" ./backend
+          docker build -t "$ACR.azurecr.io/quiz-frontend:$TAG" .
+
+      - name: Controle Trivy avant publication (echec si CRITICAL)
+        run: |
+          for img in quiz-backend quiz-frontend; do
+            docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+              aquasec/trivy:latest image --scanners vuln --severity CRITICAL \
+              --exit-code 1 "$ACR.azurecr.io/$img:$TAG"
+          done
+
+      - name: Push vers ACR
+        run: |
+          az acr login -n "$ACR"
+          docker push "$ACR.azurecr.io/quiz-backend:$TAG"
+          docker push "$ACR.azurecr.io/quiz-frontend:$TAG"
+
+      - name: Mise a jour des Container Apps
+        run: |
+          az extension add -n containerapp --upgrade -y --only-show-errors
+          az containerapp update -n quiz-backend -g "$RG" --image "$ACR.azurecr.io/quiz-backend:$TAG" -o table
+          az containerapp update -n quiz-frontend -g "$RG" --image "$ACR.azurecr.io/quiz-frontend:$TAG" -o table
+
+      - name: Revisions actives
+        run: |
+          for app in quiz-backend quiz-frontend; do
+            az containerapp revision list -n "$app" -g "$RG" \
+              --query "[?properties.active].{revision:name, image:properties.template.containers[0].image, etat:properties.runningState}" -o table
+          done
