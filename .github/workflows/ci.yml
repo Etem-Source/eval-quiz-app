@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-scan:
+    name: Build & Trivy (${{ matrix.service }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - service: backend
+            context: ./backend
+          - service: frontend
+            context: .
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build de l'image
+        run: docker build -t quiz-${{ matrix.service }}:ci ${{ matrix.context }}
+
+      - name: Rapport Trivy (HIGH et CRITICAL, informatif)
+        run: |
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+            aquasec/trivy:latest image --scanners vuln --severity HIGH,CRITICAL \
+            --exit-code 0 quiz-${{ matrix.service }}:ci | tee trivy-${{ matrix.service }}.txt
+
+      - name: Publication du rapport
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-${{ matrix.service }}
+          path: trivy-${{ matrix.service }}.txt
+
+      - name: Controle bloquant Trivy (echec si CRITICAL)
+        run: |
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+            aquasec/trivy:latest image --scanners vuln --severity CRITICAL \
+            --exit-code 1 quiz-${{ matrix.service }}:ci
