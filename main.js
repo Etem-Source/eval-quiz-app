@@ -50,7 +50,7 @@ function displayRegistrationForm() {
       </div>
       <div class="form-group">
         <label for="subject">Sujet du quiz</label>
-        <input type="text" id="subject" name="subject" required placeholder="Ex: docker">
+        <input type="text" id="subject" name="subject" required placeholder="Ex: docker, devops">
       </div>
       <!-- Honeypot field - hidden from real users -->
       <div class="form-group hp-field" aria-hidden="true">
