@@ -1,0 +1,6 @@
+﻿Revision               Active    Image
+---------------------  --------  -------------------------------------------
+quiz-backend--0000003  True      acrquizetem.azurecr.io/quiz-backend:af5c926
+Revision                Active    Image
+----------------------  --------  --------------------------------------------
+quiz-frontend--0000002  True      acrquizetem.azurecr.io/quiz-frontend:af5c926
