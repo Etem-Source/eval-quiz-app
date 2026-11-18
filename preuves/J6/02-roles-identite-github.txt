@@ -1,0 +1,4 @@
+﻿Role         Scope
+-----------  -------------------------------------------------------------------------------------------------------------------------------------------
+Contributor  /subscriptions/cdd0ce7b-b4d2-4154-a820-94afc3247ff3/resourceGroups/rg-quiz-app
+AcrPush      /subscriptions/cdd0ce7b-b4d2-4154-a820-94afc3247ff3/resourceGroups/rg-quiz-app/providers/Microsoft.ContainerRegistry/registries/acrquizetem
